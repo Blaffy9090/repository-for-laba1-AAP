@@ -11,7 +11,7 @@ using WebApplication1.Databases;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(PrepodDbContext))]
-    [Migration("20250225173633_CreateDatabase")]
+    [Migration("20250225174427_CreateDatabase")]
     partial class CreateDatabase
     {
         /// <inheritdoc />
@@ -58,7 +58,7 @@ namespace WebApplication1.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PrepodId"));
 
                     b.Property<int>("CafedraId")
-                        .HasColumnType("int4")
+                        .HasColumnType("int")
                         .HasColumnName("c_cafedra_id")
                         .HasComment("Айди кафедры");
 

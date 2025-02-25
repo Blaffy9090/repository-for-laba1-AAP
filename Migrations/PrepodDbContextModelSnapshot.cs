@@ -55,7 +55,7 @@ namespace WebApplication1.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PrepodId"));
 
                     b.Property<int>("CafedraId")
-                        .HasColumnType("int4")
+                        .HasColumnType("int")
                         .HasColumnName("c_cafedra_id")
                         .HasComment("Айди кафедры");
 

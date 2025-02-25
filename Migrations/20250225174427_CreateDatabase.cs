@@ -32,7 +32,7 @@ namespace WebApplication1.Migrations
                     c_prepod_firstname = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false, comment: "Имя препода"),
                     c_prepod_lastname = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false, comment: "Фамилия препода"),
                     c_prepod_midname = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false, comment: "Отчество препода"),
-                    c_cafedra_id = table.Column<int>(type: "int4", nullable: false, comment: "Айди кафедры")
+                    c_cafedra_id = table.Column<int>(type: "int", nullable: false, comment: "Айди кафедры")
                 },
                 constraints: table =>
                 {
