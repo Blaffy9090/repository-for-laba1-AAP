@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using WebApplication1.Databases.Helpers;
 using WebApplication1.Models;
 
-namespace WebApplication1.Databases
+namespace WebApplication1.Database.Configurations
 {
     public class PrepodConfiguration : IEntityTypeConfiguration<Prepod>
     {
@@ -46,6 +46,15 @@ namespace WebApplication1.Databases
                 .HasColumnType(ColumnType.Int)
                 .HasComment("Айди кафедры");
 
+            builder.ToTable(TableName).HasOne(p => p.Cafedra)
+                .WithMany().HasForeignKey(p => p.CafedraId)
+                .HasConstraintName("fk_f_group_id")
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.ToTable(TableName)
+                .HasIndex(p => p.CafedraId, $"idx_{TableName}_fk_f_group_id");
+
+            builder.Navigation(p => p.Cafedra).AutoInclude();
         }
     }
 }
