@@ -10,8 +10,13 @@
 
         public string MiddleName { get; set;}
 
-        public int CafedraId {  get; set; }
-        
+        public int DegreeId { get; set; }
+        public Degree Degree { get; set; }
+        public int PositionId { get; set; }
+        public Position Position { get; set; }
+
+        public int CafedraId { get; set; }
         public Cafedra Cafedra { get; set; }
+        
     }
 }

@@ -26,19 +26,45 @@ namespace WebApplication1.Database.Configurations
             builder.Property(p => p.FirstName)
                 .IsRequired()
                 .HasColumnName("c_prepod_firstname")
-                .HasColumnType(ColumnType.String).HasMaxLength(100)
+                .HasColumnType(ColumnType.String).HasMaxLength(50)
                 .HasComment("Имя препода");
 
             builder.Property(p => p.LastName)
                 .IsRequired()
                 .HasColumnName("c_prepod_lastname")
-                .HasColumnType(ColumnType.String).HasMaxLength(100)
+                .HasColumnType(ColumnType.String).HasMaxLength(50)
                 .HasComment("Фамилия препода");
 
             builder.Property(p => p.MiddleName)
                 .HasColumnName("c_prepod_midname")
-                .HasColumnType(ColumnType.String).HasMaxLength(100)
+                .HasColumnType(ColumnType.String).HasMaxLength(50)
                 .HasComment("Отчество препода");
+
+            builder.Property(p => p.DegreeId)
+            .HasColumnName("c_degree_id")
+            .HasColumnType(ColumnType.Int)
+            .HasComment("Степень(учёная) преподавателя");
+
+            builder.ToTable(TableName).HasOne(p => p.Degree)
+                .WithMany().HasForeignKey(p => p.DegreeId)
+                .HasConstraintName("fk_degree_id")
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.ToTable(TableName)
+                .HasIndex(p => p.DegreeId, $"idx_{TableName}_fk_degree_id");
+
+            builder.Property(p => p.PositionId)
+                .HasColumnName("c_position_id")
+                .HasColumnType(ColumnType.Int)
+                .HasComment("Должность преподавателя");
+
+            builder.ToTable(TableName).HasOne(p => p.Position)
+                .WithMany().HasForeignKey(p => p.PositionId)
+                .HasConstraintName("fk_position_id")
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.ToTable(TableName)
+                .HasIndex(p => p.PositionId, $"idx_{TableName}_fk_position_id");
 
             builder.Property(p => p.CafedraId)
                 .IsRequired()
