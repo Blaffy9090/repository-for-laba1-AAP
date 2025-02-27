@@ -221,29 +221,6 @@ namespace WebApplication1.Migrations
                     b.ToTable("Subject", (string)null);
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.Zanyatie", b =>
-                {
-                    b.Property<int>("ZanyatieId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("zanyatie_id")
-                        .HasComment("Идентификатор занятия(пары)");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ZanyatieId"));
-
-                    b.Property<string>("ZanyatieName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar")
-                        .HasColumnName("c_zanyatie_name")
-                        .HasComment("Название пары");
-
-                    b.HasKey("ZanyatieId")
-                        .HasName("pk_Zanyatie_zanyatie_id");
-
-                    b.ToTable("Zanyatiya");
-                });
-
             modelBuilder.Entity("WebApplication1.Models.Cafedra", b =>
                 {
                     b.HasOne("WebApplication1.Models.Prepod", "Admin")
