@@ -9,6 +9,8 @@ namespace WebApplication1.Interfaces
     public interface IScheduleService
     {
         public Task<Schedule> GetScheduleAsync(int scheduleId, CancellationToken cancellationToken);
+
+        public Task<List<Schedule>> GetFilteredSchedules(ScheduleFilter scheduleFilter, CancellationToken cancellationToken);
     }
 
     public class ScheduleService : IScheduleService
