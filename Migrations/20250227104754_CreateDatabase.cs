@@ -50,19 +50,6 @@ namespace WebApplication1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Zanyatiya",
-                columns: table => new
-                {
-                    zanyatie_id = table.Column<int>(type: "int", nullable: false, comment: "Идентификатор занятия(пары)")
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    c_zanyatie_name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false, comment: "Название пары")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("pk_Zanyatie_zanyatie_id", x => x.zanyatie_id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Cafedra",
                 columns: table => new
                 {
@@ -194,9 +181,6 @@ namespace WebApplication1.Migrations
 
             migrationBuilder.DropTable(
                 name: "Schedule");
-
-            migrationBuilder.DropTable(
-                name: "Zanyatiya");
 
             migrationBuilder.DropTable(
                 name: "Subject");

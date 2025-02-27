@@ -10,7 +10,6 @@ namespace WebApplication1.Databases
 
         DbSet<Cafedra> Cafedri { get; set; }
         Enum Subjects { get; set; }
-        DbSet<Zanyatie> Zanyatiya { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -20,7 +19,6 @@ namespace WebApplication1.Databases
             modelBuilder.ApplyConfiguration(new PositionConfiguration());
             modelBuilder.ApplyConfiguration(new ScheduleConfiguration());
             modelBuilder.ApplyConfiguration(new SubjectConfiguration());
-            modelBuilder.ApplyConfiguration(new ZanyatieConfiguration());
         }
 
         public PrepodDbContext(DbContextOptions<PrepodDbContext> options) : base(options) { }
