@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
 using WebApplication1.Databases;
+using WebApplication1.Filters;
 using WebApplication1.Models;
 
 namespace WebApplication1.Interfaces
@@ -23,6 +25,28 @@ namespace WebApplication1.Interfaces
             var schedule = _dbContext.Set<Schedule>().FirstAsync<Schedule>( e => (e.Id == scheduleId), cancellationToken);
 
             return schedule;
+        }
+
+        public Task<List<Schedule>> GetFilteredSchedules(ScheduleFilter scheduleFilter, CancellationToken cancellationToken)
+        {  
+            var schedule = _dbContext.Set<Schedule>().ToList();
+
+            if (scheduleFilter.SubjectId != default)
+            {
+                schedule = schedule.Where(p => p.SubjectId == scheduleFilter.SubjectId).ToList();
+            }
+
+            if (scheduleFilter.PrepodId != default)
+            {
+                schedule = schedule.Where(p => p.PrepodId == scheduleFilter.PrepodId).ToList();
+            }
+
+            if (scheduleFilter.CafedraId != default)
+            {
+                schedule = schedule.Where(p => p.Prepod.CafedraId == scheduleFilter.CafedraId).ToList();
+            }
+
+            return Task.FromResult(schedule);
         }
     }
 }
