@@ -5,7 +5,7 @@ using WebApplication1.Interfaces;
 
 namespace WebApplication1.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/ScheduleController")]
     [ApiController]
     public class ScheduleController : ControllerBase
     {
@@ -18,16 +18,24 @@ namespace WebApplication1.Controllers
             _scheduleService = scheduleService;
         }
 
-        [HttpPost(Name = "GetSchedule")]
+        [HttpGet]
+        [Route("/{scheduleId}")]
         public async Task<IActionResult> GetSchedule(int scheduleId, CancellationToken cancellationToken)
         {
             var schedule = await _scheduleService.GetScheduleAsync(scheduleId, cancellationToken);
 
-            return Ok(schedule);
+            if (schedule != null)
+            {
+                return Ok(schedule);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
-        [HttpPost(Name = "GetFilteredSchedules")]
-        public async Task<IActionResult> GetFilteredSchedules(ScheduleFilter scheduleFilter, CancellationToken cancellationToken)
+        [HttpPost("GetFilteredSchedule")]
+        public async Task<IActionResult> GetFilteredSchedulesTask(ScheduleFilter scheduleFilter, CancellationToken cancellationToken)
         {
             var schedule = await _scheduleService.GetFilteredSchedules(scheduleFilter, cancellationToken);
 

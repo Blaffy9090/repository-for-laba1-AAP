@@ -24,7 +24,7 @@ namespace WebApplication1.Interfaces
 
         public Task<Schedule> GetScheduleAsync(int scheduleId, CancellationToken cancellationToken)
         {
-            var schedule = _dbContext.Set<Schedule>().FirstAsync<Schedule>( e => (e.Id == scheduleId), cancellationToken);
+            var schedule = _dbContext.Set<Schedule>().FirstOrDefaultAsync<Schedule>( e => (e.Id == scheduleId), cancellationToken);
 
             return schedule;
         }

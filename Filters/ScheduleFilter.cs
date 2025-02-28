@@ -2,10 +2,10 @@
 {
     public class ScheduleFilter
     {
-        public int PrepodId { get; set; }
+        public int PrepodId { get; set; } = 0;
 
-        public int CafedraId { get; set; }
+        public int CafedraId { get; set; } = 0;
 
-        public int SubjectId { get; set; }
+        public int SubjectId { get; set; } = 0;
     }
 }

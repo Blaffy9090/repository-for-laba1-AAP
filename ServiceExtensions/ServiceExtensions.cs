@@ -15,5 +15,16 @@ namespace WebApplication1.Extensions
 
             return services;
         }
+
+        public static IServiceCollection ConfigureServices(this IServiceCollection services)
+        {           
+            services.AddSwaggerGen(c =>
+            {
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+                c.IgnoreObsoleteActions();
+            });
+
+            return services;
+        }
     }
 }
