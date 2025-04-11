@@ -40,8 +40,6 @@ namespace WebApplication1.Database.Configurations
 
             builder.ToTable(TableName)
                 .HasIndex(p => p.CafedraId, $"idx_{TableName}_fk_admin_id_prepod_id");
-
-            builder.Navigation(p => p.Admin).AutoInclude();
         }
     }
 }

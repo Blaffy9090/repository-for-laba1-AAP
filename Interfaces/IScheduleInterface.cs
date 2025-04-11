@@ -26,6 +26,8 @@ namespace WebApplication1.Interfaces
         {
             var schedule = _dbContext.Set<Schedule>().FirstOrDefaultAsync<Schedule>( e => (e.Id == scheduleId), cancellationToken);
 
+           
+
             return schedule;
         }
 

@@ -55,6 +55,11 @@ namespace WebApplication1.Database.Configurations
                 .HasColumnName("c_schedule_order_in_day")
                 .HasColumnType(ColumnType.Byte)
                 .HasComment("Порядок занятия в дне (1-8)");
+
+            builder.Navigation(p => p.Subject)
+                .AutoInclude();
+            builder.Navigation(p => p.Prepod)
+                .AutoInclude();
         }
     }
 }
