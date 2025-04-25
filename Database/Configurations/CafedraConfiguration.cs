@@ -32,10 +32,16 @@ namespace WebApplication1.Database.Configurations
                 .HasColumnType(ColumnType.Int)
                 .HasComment("Идентификатор администратора(заведующего) кафедры");
 
-            builder.ToTable(TableName).HasOne(c => c.Admin)
+/*            builder.ToTable(TableName).HasOne(c => c.Admin)
                 .WithOne()
                 .HasForeignKey<Cafedra>(c => c.AdminId)
                 .HasConstraintName("fk_admin_id_prepod_id")
+                .OnDelete(DeleteBehavior.Restrict);*/
+
+            builder.ToTable(TableName).HasOne(s => s.Admin)
+                .WithMany()
+                .HasForeignKey(s => s.AdminId)
+                .HasConstraintName($"fk_admin_id_prepod_id")
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.ToTable(TableName)
