@@ -26,8 +26,6 @@ namespace WebApplication1.Interfaces
         {
             var schedule = _dbContext.Set<Schedule>().FirstOrDefaultAsync<Schedule>( e => (e.Id == scheduleId), cancellationToken);
 
-           
-
             return schedule;
         }
 
@@ -49,16 +47,6 @@ namespace WebApplication1.Interfaces
             {
                 schedule = schedule.Where(p => p.Prepod.CafedraId == scheduleFilter.CafedraId).ToList();
             }
-
-/*            var cafedras = _dbContext.Set<Cafedra>().ToList();
-
-            foreach (var sch in schedule)
-            {
-                if (sch.Prepod.Cafedra == null)
-                {
-                    sch.Prepod.Cafedra = cafedras.FirstOrDefault(c => c.CafedraId == sch.Prepod.CafedraId);
-                }
-            }*/
 
             return Task.FromResult(schedule);
         }
