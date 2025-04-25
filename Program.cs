@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using NLog;
 using NLog.Web;
+using System.Text.Json.Serialization;
+
 using WebApplication1.Databases;
 using WebApplication1.Extensions;
 
@@ -22,6 +24,14 @@ try
 
     builder.Services.AddServices();
     builder.Services.ConfigureServices();
+
+    builder.Services
+        .AddControllers()
+        .AddJsonOptions(opts => {
+            // ignore reference loops
+            opts.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+            opts.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        });
 
     var app = builder.Build();
 

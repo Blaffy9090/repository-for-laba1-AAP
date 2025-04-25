@@ -5,6 +5,7 @@ using WebApplication1.Filters;
 using WebApplication1.Interfaces;
 using WebApplication1.Models;
 
+
 namespace WebApplication1.Extensions
 {
     public static class ServiceExtensions
@@ -12,6 +13,7 @@ namespace WebApplication1.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped<IScheduleService, ScheduleService>();
+            services.AddScoped<ISubjectService, SubjectService>();
 
             return services;
         }

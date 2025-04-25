@@ -1,4 +1,6 @@
-﻿namespace WebApplication1.Models
+﻿using System.Text.Json.Serialization;
+
+namespace WebApplication1.Models
 {
     public class Prepod
     {
@@ -16,6 +18,7 @@
         public Position Position { get; set; }
 
         public int CafedraId { get; set; }
+
         public Cafedra Cafedra { get; set; }
         
     }
