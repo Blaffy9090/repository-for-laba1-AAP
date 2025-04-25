@@ -24,6 +24,14 @@ namespace WebApplication1.Database.Configurations
                 .HasColumnName("c_subject_name")
                 .HasColumnType(ColumnType.String).HasMaxLength(100)
                 .HasComment("Название предмета");
+
+            builder.Property(s => s.IsDeleted)
+                .HasColumnName("is_deleted")
+                .HasDefaultValue(false)
+                .HasComment("Помечено как удалённое (soft-delete)");
+
+            // Optional: move your query‐filter here so it's all in one place
+            builder.HasQueryFilter(s => !s.IsDeleted);
         }
     }
 }

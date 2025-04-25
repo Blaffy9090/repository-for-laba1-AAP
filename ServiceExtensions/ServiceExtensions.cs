@@ -1,9 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using System.Diagnostics.CodeAnalysis;
-using WebApplication1.Databases;
-using WebApplication1.Filters;
 using WebApplication1.Interfaces;
-using WebApplication1.Models;
 
 namespace WebApplication1.Extensions
 {
@@ -12,6 +7,7 @@ namespace WebApplication1.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped<IScheduleService, ScheduleService>();
+            services.AddScoped<ISubjectService, SubjectService>();
 
             return services;
         }

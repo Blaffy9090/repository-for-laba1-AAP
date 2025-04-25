@@ -82,7 +82,7 @@ namespace WebApplication1.Database.Configurations
 
             builder.Navigation(p => p.Degree).AutoInclude();
             builder.Navigation(p => p.Position).AutoInclude();
-            //builder.Navigation(p => p.Cafedra).AutoInclude();
+            builder.Navigation(p => p.Cafedra).AutoInclude();
         }
     }
 }

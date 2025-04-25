@@ -19,6 +19,8 @@ namespace WebApplication1.Databases
             modelBuilder.ApplyConfiguration(new PositionConfiguration());
             modelBuilder.ApplyConfiguration(new ScheduleConfiguration());
             modelBuilder.ApplyConfiguration(new SubjectConfiguration());
+
+            modelBuilder.Entity<Subject>().HasQueryFilter(s => !s.IsDeleted);
         }
 
         public PrepodDbContext(DbContextOptions<PrepodDbContext> options) : base(options) { }
