@@ -1,5 +1,5 @@
 ﻿using WebApplication1.Models;
-
+using Xunit;
 namespace WebApplication1.Tests
 {
     public class UnitTest1
@@ -7,9 +7,18 @@ namespace WebApplication1.Tests
         [Fact]
         public void Test1()
         {
-            var schd = new Schedule() { };
+            var schd = new Schedule() {
+                Prepod = new Prepod()
+                {
+                    FirstName = "Petrov"
+                },
+                Subject = new Subject()
+                {
+                    SubjectName = "Proga"
+                }
+            };
 
-            Assert.True(true);
+            Assert.True(schd.IsValidSchedule());
         }
     }
 }

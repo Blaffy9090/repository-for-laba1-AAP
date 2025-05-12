@@ -1,4 +1,6 @@
-﻿namespace WebApplication1.Models
+﻿using System.Diagnostics;
+
+namespace WebApplication1.Models
 {
     public class Schedule
     {
@@ -12,6 +14,20 @@
 
         public DayOfWeek DayOfWeek { get; set; }  // 1-6 Понедельник - Суббота
         public ClassOrder OrderInDay { get; set; } // 1-8 пара за день
+
+        public bool IsValidSubject()
+        {
+            return Subject != null;
+        }
+        public bool IsValidPrepod()
+        {
+            return Prepod != null;
+        }
+
+        public bool IsValidSchedule()
+        {
+            return IsValidPrepod() && IsValidSubject();
+        }
     }
     public enum DayOfWeek
     {
