@@ -4,6 +4,7 @@ using NLog.Web;
 using System.Text.Json.Serialization;
 using WebApplication1.Databases;
 using WebApplication1.Extensions;
+using WebApplication1.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -40,6 +41,8 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
     }
+
+    app.UseMiddleware<ExceptionHandlerMiddleware>();
 
     app.UseAuthorization();
 
