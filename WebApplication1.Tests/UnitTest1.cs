@@ -12,6 +12,32 @@ namespace WebApplication1.Tests
                 {
                     FirstName = "Petrov"
                 },
+            };
+
+            Assert.True(schd.IsValidPrepod());
+        }
+        [Fact]
+        public void Test2()
+        {
+            var schd = new Schedule()
+            {
+                Subject = new Subject()
+                {
+                    SubjectName = "Proga"
+                }
+            };
+
+            Assert.True(schd.IsValidSubject());
+        }
+        [Fact]
+        public void Test3()
+        {
+            var schd = new Schedule()
+            {
+                Prepod = new Prepod()
+                {
+                    FirstName = "Petrov"
+                },
                 Subject = new Subject()
                 {
                     SubjectName = "Proga"
