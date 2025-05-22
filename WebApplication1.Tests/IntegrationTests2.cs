@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using WebApplication1.Databases;
 using Moq;
 using WebApplication1.Models;
+using WebApplication1.Controllers;
+using WebApplication1.Interfaces;
 namespace WebApplication1.Tests
 {
     public class IntegrationTests2
@@ -20,17 +22,27 @@ namespace WebApplication1.Tests
         }
 
         [Fact]
-        public async Task GetAllSubjects()
+        public async Task GetSchedule()
         {
             var db = new PrepodDbContext(prepodDbContext);
-            var service = new SubjectService(db);
-            var ctrl = new SubjectController(service);
+            var service = new ScheduleService(db);
+            var ctrl = new ScheduleController(service);
 
-            var ll = await ctrl.GetAll( new CancellationToken());
+            var ll = await ctrl.GetSchedule(4, new CancellationToken());
 
             Assert.NotNull(ll);
-            if (ll != null)
-                Assert.NotEmpty((List<Subject>)ll);
+        }
+
+        [Fact]
+        public async Task GetFilteredSchedules()
+        {
+            var db = new PrepodDbContext(prepodDbContext);
+            var service = new ScheduleService(db);
+            var ctrl = new ScheduleController(service);
+
+            var ll = await ctrl.GetFilteredSchedulesTask(new Filters.ScheduleFilter { SubjectId = 4}, new CancellationToken());
+
+            Assert.NotNull(ll);
         }
     }
 }

@@ -12,6 +12,11 @@ namespace WebApplication1.Controllers
         private readonly ILogger<ScheduleController> _logger;
         private readonly IScheduleService _scheduleService;
 
+        public ScheduleController( IScheduleService scheduleService)
+        {
+            _scheduleService = scheduleService;
+        }
+
         public ScheduleController(ILogger<ScheduleController> logger, IScheduleService scheduleService) 
         {
             _logger = logger;

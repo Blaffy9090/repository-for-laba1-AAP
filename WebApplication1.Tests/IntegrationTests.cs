@@ -32,5 +32,17 @@ namespace WebApplication1.Tests
             if (ll != null)
                 Assert.NotEmpty((List<Subject>)ll);
         }
+
+        [Fact]
+        public async Task GetSubject()
+        {
+            var db = new PrepodDbContext(prepodDbContext);
+            var service = new SubjectService(db);
+            var ctrl = new SubjectController(service);
+
+            var ll = await ctrl.Get( 6, new CancellationToken());
+
+            Assert.NotNull(ll);
+        }
     }
 }
