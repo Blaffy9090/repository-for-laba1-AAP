@@ -24,6 +24,8 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="ServiceExtensions\" />
+    <Folder Include="Middlewares\" />
+
   </ItemGroup>
 
 </Project>
